@@ -186,22 +186,43 @@ Accepted / Superseded by ADR-NNN / Deprecated
 
 ## 7. ディレクトリ構成（テンプレート）
 
+分析はドメイン（データの種類・業種）ごとにまとめる。
+同じドメインの知見が蓄積されることで、過去の分析との比較・再利用が容易になる。
+
+**ドメイン例:**
+
+| ドメイン | 説明 | 例 |
+|---------|------|---|
+| `demographics` | 人口・少子高齢化・移住 | 国勢調査、住民基本台帳 |
+| `economics` | 経済・物価・雇用・産業 | GDP、CPI、求人倍率 |
+| `health` | 医療・疾患・公衆衛生 | 死因統計、医療費 |
+| `environment` | 気象・エネルギー・災害 | 気温、電力消費、降水量 |
+| `education` | 教育・学力・進学 | PISA、文科省統計 |
+| `transportation` | 交通・物流・移動 | 鉄道利用者数、道路交通 |
+| `finance` | 金融・株・為替 | 株価、金利 |
+| `society` | 犯罪・社会保障・文化 | 犯罪統計、投票率 |
+
+新しいドメインが必要な場合は上記に追加する。
+
 ```
 analysis/
-└── YYYYMMDD-<title>/
-    ├── PROPOSAL.md          # 着手前チェックリスト（RQ・仮説・スコープ）
-    ├── README.md            # 分析の概要・実行手順
-    ├── decisions/
-    │   └── 001-<手法名>.md  # ADR
-    ├── data/
-    │   ├── raw/             # 取得したままのデータ（変更しない）
-    │   └── processed/       # 加工済みデータ
-    ├── notebooks/
-    │   ├── 01_eda.ipynb          # 探索的分析
-    │   ├── 02_analysis.ipynb     # 検証的分析
-    │   └── 03_model.ipynb        # モデリング（任意）
-    ├── outputs/
-    │   ├── figures/              # 出力グラフ
-    │   └── model_diagnostics/    # 学習曲線・残差・混同行列等（任意）
-    └── REPORT.md                 # 最終レポート
+└── <domain>/                        # ドメイン（例: demographics, economics）
+    └── YYYYMMDD-<title>/            # 個別分析
+        ├── PROPOSAL.md              # 着手前チェックリスト（RQ・仮説・スコープ）
+        ├── README.md                # 分析の概要・実行手順
+        ├── decisions/
+        │   └── 001-<手法名>.md      # ADR
+        ├── data/
+        │   ├── raw/                 # 取得したままのデータ（変更しない）
+        │   └── processed/           # 加工済みデータ
+        ├── notebooks/
+        │   ├── 01_eda.ipynb         # 探索的分析
+        │   ├── 02_analysis.ipynb    # 検証的分析
+        │   └── 03_model.ipynb       # モデリング（任意）
+        ├── outputs/
+        │   ├── figures/             # 出力グラフ
+        │   └── model_diagnostics/   # 学習曲線・残差・混同行列等（任意）
+        └── REPORT.md                # 最終レポート
 ```
+
+**ブランチ名規則:** `analysis/<domain>/<title>`（例: `analysis/demographics/population-aging`）
