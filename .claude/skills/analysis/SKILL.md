@@ -1,3 +1,8 @@
+---
+name: analysis
+description: データを渡すと DoD に沿った分析を実装し、DA レビューが収束したら PR を作成する
+---
+
 # /analysis — 分析自動化 Skill
 
 データを渡すと DoD に沿った分析を実装し、DA レビューが収束したら PR を作成する。
