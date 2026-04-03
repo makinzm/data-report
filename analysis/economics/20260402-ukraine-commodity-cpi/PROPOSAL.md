@@ -175,11 +175,11 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 | データ名 | IMF DataMapper — PCPIPCH（Consumer Price Index） |
 | 提供機関 | International Monetary Fund (IMF) |
 | ライセンス | IMF 独自著作権。統計データには General Terms とは別の特別条項（"The Use of IMF Data"）が適用される |
-| ライセンス確認 URL | https://www.imf.org/en/about/copyright-and-terms（"The Use of IMF Data" セクション） |
+| ライセンス確認 URL | https://www.imf.org/en/about/copyright-and-terms ("The Use of IMF Data" セクション) |
 | 分析結果の公開 | **可**（非商用。帰属表示・変換の明示が必須） |
 | 判断根拠（原文引用） | Data 特別条項: "You may download, extract, copy, create derivative works, publish, distribute, and use Data obtained from IMF Sites, subject to the following conditions: Whether obtained directly from the IMF or another party, when Data is distributed or reproduced in any manner, it must appear accurately with attribution to the IMF as the source. ...If the Data is materially transformed by the User, this must be stated explicitly along with the required source citation." 商用利用: "For any potential commercial reuse of IMF Data, please email copyright@imf.org to request permission." |
 | 帰属表示フォーマット | `Source: International Monetary Fund, International Financial Statistics, https://data.imf.org/` |
-| 注意点 | **商用利用は要問い合わせ**（copyright@imf.org）。本分析はブログ・YouTube・GitHub での非商用の学習・研究目的であり、Data 特別条項の "publish, distribute, and use" に該当すると判断する。データを加工・集計している場合はその旨を成果物に明示すること |
+| 注意点 | **商用利用は要問い合わせ** (copyright@imf.org)。本分析はブログ・YouTube・GitHub での非商用の学習・研究目的であり、Data 特別条項の "publish, distribute, and use" に該当すると判断する。データを加工・集計している場合はその旨を成果物に明示すること |
 | API エンドポイント | `https://www.imf.org/external/datamapper/api/v1/PCPIPCH/EGY/NGA/IND/CHN/SAU` |
 | 認証・登録 | 不要 |
 | 対象国 | EGY・NGA・IND・CHN・SAU |
@@ -197,9 +197,9 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 | ライセンス確認 URL | https://comtrade.un.org/licenseagreement.html |
 | 分析結果の公開 | **要確認**（データそのものの再配布は明示禁止。加工済み分析結果の公開は規約上グレーゾーン） |
 | 判断根拠（原文引用） | "copying, automated browsing or downloading, redistribution, publication, or commercial exploitation of any material...is strictly prohibited." および "Re-dissemination means re-using UN Comtrade data as is (without any transformation) in other data platforms (printed or online), not for internal use." |
-| 使用状況 | **本分析では使用しない。** 加工済みグラフの公開可否が規約上グレーゾーンのため除外。初版完成後に comtrade@un.org へ許可を問い合わせ、承認が得られた場合に補足として追加する（makinzm/data-report#3） |
-| 取得方法 | `comtradeapicall` ライブラリ（`uv add comtradeapicall`） |
-| 認証 | **無料 API キー必須**（comtradeplus.un.org でアカウント作成 → 開発者ポータルで `comtrade - v1` を Subscribe） |
+| 使用状況 | **本分析では使用しない。** 加工済みグラフの公開可否が規約上グレーゾーンのため除外。初版完成後に comtrade@un.org へ許可を問い合わせ、承認が得られた場合に補足として追加する (makinzm/data-report#3) |
+| 取得方法 | `comtradeapicall` ライブラリ (`uv add comtradeapicall`) |
+| 認証 | **無料 API キー必須** (comtradeplus.un.org でアカウント作成 → 開発者ポータルで `comtrade - v1` を Subscribe) |
 | レート制限 | 1日500リクエスト上限（無料プラン） |
 | APIキー管理 | `.env` ファイルで管理。`.gitignore` 済み |
 | 対象データ | ロシア・ウクライナの原油・小麦・天然ガス輸出先構成（HS コード別・年次） |
