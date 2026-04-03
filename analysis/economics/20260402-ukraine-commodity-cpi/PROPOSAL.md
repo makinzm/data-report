@@ -155,9 +155,9 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 | データ名 | Consumer Prices — OECD.SDD.TPS |
 | 提供機関 | OECD |
 | ライセンス | OECD 独自規約（CC BY ではない。Data セクション適用） |
-| ライセンス確認 URL | https://www.oecd.org/en/about/terms-conditions.html（Sec 3. Data） |
+| ライセンス確認 URL | https://www.oecd.org/en/about/terms-conditions.html (Sec 3. Data) |
 | 分析結果の公開 | **可**（商用含む。ただしサードパーティ制限の確認が必要） |
-| 判断根拠（原文引用） | "Except where additional restrictions apply, you can extract from, download, copy, adapt, print, distribute, share and embed Data for any purpose, even for commercial use." ただし同条件に: "Data may be subject to restrictions beyond the scope of these Terms and Conditions, either because specific terms apply to those Data or because third parties may have ownership interests. It is the user's responsibility to verify...whether the Data is fully or partially owned by third parties." |
+| 判断根拠（原文引用） | "Except where additional restrictions apply as stated above, you can extract from, download, copy, adapt, print, distribute, share and embed Data for any purpose, even for commercial use." ただし同条件に: "Data may be subject to restrictions beyond the scope of these Terms and Conditions, either because specific terms apply to those Data or because third parties may have ownership interests. It is the user's responsibility to verify...whether the Data is fully or partially owned by third parties." |
 | 帰属表示フォーマット | 規約上の明示義務はないが慣行として記載: `Source: OECD, Consumer Prices (MEI), https://stats.oecd.org/` |
 | **要確認事項** | OECD Stats の CPI データが第三者所有データを含まないか、データのメタデータまたは「source」タブで確認すること（取得時に記録） |
 | 取得方法 | SDMX-JSON API v2 |
@@ -174,12 +174,12 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 |------|------|
 | データ名 | IMF DataMapper — PCPIPCH（Consumer Price Index） |
 | 提供機関 | International Monetary Fund (IMF) |
-| ライセンス | IMF 独自著作権（CC BY ではない） |
-| ライセンス確認 URL | https://www.imf.org/en/about/copyright-and-terms |
-| 分析結果の公開 | **条件付き可**（非商用・研究・教育目的は許可。帰属表示必須） |
-| 判断根拠（原文引用） | "Users may download, extract, copy, create derivative works, publish, distribute and sell Data obtained from IMF Sites, subject to the following conditions: When Data is distributed or reproduced, it must appear accurately and attributed to the IMF as the source." および "Fair use is defined by the IMF as the excerption or quoting of IMF content by individuals (e.g., academics, journalists, students...) for noncommercial purposes such as criticism, comment, news reporting, teaching, scholarship, or research." |
-| 帰属表示フォーマット | `Source: International Monetary Fund, DataMapper.` |
-| 注意点 | **商用利用は要問い合わせ**（copyright@imf.org）。本分析はブログ・YouTube・GitHub での学習・研究目的の公開であり、"fair use" に該当すると判断する。IMF データの**生データそのものの再配布**は避け、加工済みグラフ・集計値のみ公開する |
+| ライセンス | IMF 独自著作権。統計データには General Terms とは別の特別条項（"The Use of IMF Data"）が適用される |
+| ライセンス確認 URL | https://www.imf.org/en/about/copyright-and-terms（"The Use of IMF Data" セクション） |
+| 分析結果の公開 | **可**（非商用。帰属表示・変換の明示が必須） |
+| 判断根拠（原文引用） | Data 特別条項: "You may download, extract, copy, create derivative works, publish, distribute, and use Data obtained from IMF Sites, subject to the following conditions: Whether obtained directly from the IMF or another party, when Data is distributed or reproduced in any manner, it must appear accurately with attribution to the IMF as the source. ...If the Data is materially transformed by the User, this must be stated explicitly along with the required source citation." 商用利用: "For any potential commercial reuse of IMF Data, please email copyright@imf.org to request permission." |
+| 帰属表示フォーマット | `Source: International Monetary Fund, International Financial Statistics, https://data.imf.org/` |
+| 注意点 | **商用利用は要問い合わせ**（copyright@imf.org）。本分析はブログ・YouTube・GitHub での非商用の学習・研究目的であり、Data 特別条項の "publish, distribute, and use" に該当すると判断する。データを加工・集計している場合はその旨を成果物に明示すること |
 | API エンドポイント | `https://www.imf.org/external/datamapper/api/v1/PCPIPCH/EGY/NGA/IND/CHN/SAU` |
 | 認証・登録 | 不要 |
 | 対象国 | EGY・NGA・IND・CHN・SAU |
