@@ -23,15 +23,11 @@ git checkout analysis/economics/20260402-ukraine-commodity-cpi
 ## Step 1 — Python 環境セットアップ
 
 ```bash
-# 仮想環境を作成（初回のみ）
-python3 -m venv .venv
-source .venv/bin/activate
+cd analysis/economics/20260402-ukraine-commodity-cpi
 
-# 依存パッケージをインストール
-pip install -r analysis/economics/20260402-ukraine-commodity-cpi/requirements.txt
+# 依存パッケージをインストール（uv が .venv を自動作成する）
+uv sync
 ```
-
-> `requirements.txt` がまだ存在しない場合は先にStep 2を読んでから作成する。
 
 ---
 
