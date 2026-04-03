@@ -136,7 +136,7 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 | データ名 | FAO Food Price Index (FFPI) |
 | 提供機関 | Food and Agriculture Organization of the United Nations (FAO) |
 | ランディングページ | https://www.fao.org/worldfoodsituation/foodpricesindex/en/ |
-| CSV 直接 DL | https://www.fao.org/media/docs/worldfoodsituationlibraries/default-document-library/food_price_indices_data_csv_mar.csv |
+| CSV 直接 DL | https://www.fao.org/media/docs/worldfoodsituationlibraries/default-document-library/food_price_indices_data.csv |
 | ライセンス | CC BY 4.0 |
 | ライセンス確認 URL | https://www.fao.org/contact-us/terms/db-terms-of-use/en/ |
 | 分析結果の公開 | **可**（非商用目的・帰属表示必須） |
@@ -163,7 +163,8 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 | 取得方法 | SDMX-JSON API v2 |
 | API エンドポイント | `https://sdmx.oecd.org/public/rest/v2` |
 | データフロー | `OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL` |
-| クエリ例（DEU 月次） | `https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL/DEU.M.GY.CPI.IX._T.N.?startPeriod=2020-01&endPeriod=2023-12&format=jsondata` |
+| クエリ（11カ国・月次） | `https://sdmx.oecd.org/public/rest/v2/data/dataflow/OECD.SDD.TPS/DSD_PRICES@DF_PRICES_ALL/1.0/DEU+FRA+ITA+POL+TUR+USA+GBR+CAN+AUS+JPN+KOR.M.N.CPI.IX._T.N.GY?startPeriod=2020-01&endPeriod=2023-12&format=jsondata` |
+| クエリ補足 | 次元順: REF_AREA.FREQ.METHODOLOGY.MEASURE.UNIT_MEASURE.EXPENDITURE.ADJUSTMENT.TRANSFORMATION。**レート制限で動作未確認。スクリプト実装時に要検証** |
 | 認証・登録 | 不要 |
 | 対象国 | DEU・FRA・ITA・POL・TUR・USA・GBR・CAN・AUS・JPN・KOR |
 | 粒度 | 月次 |
