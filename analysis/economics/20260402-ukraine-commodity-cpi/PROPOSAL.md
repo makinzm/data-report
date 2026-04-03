@@ -119,13 +119,15 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 | ランディングページ | https://thedocs.worldbank.org/en/doc/18675f1d1639c7a34d463f59263ba0a2-0050012025/world-bank-commodities-price-data-the-pink-sheet |
 | 月次 Excel 直接 DL | https://thedocs.worldbank.org/en/doc/18675f1d1639c7a34d463f59263ba0a2-0050012025/related/CMO-Historical-Data-Monthly.xlsx |
 | ライセンス | CC BY 4.0 |
-| 取得方法 | Excel 直接ダウンロード（最も確実）。DataBank API は個別指標コードの公式ドキュメントが不明のため Excel を使用する |
-| 認証方式 | 不要 |
-| 登録の要否 | 不要 |
-| レート制限 | なし |
+| ライセンス確認 URL | https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets |
+| 分析結果の公開 | **可**（帰属表示必須） |
+| 判断根拠（原文引用） | "You are encouraged to use the Datasets to benefit yourself and others in creative ways. You may extract, download, and make copies of the data contained in the Datasets, and you may share that data with third parties." |
+| 帰属表示フォーマット | `Source: The World Bank, Commodity Price Data (The Pink Sheet).` |
+| 注意点 | World Bank が本分析を後援・承認していると示唆することは禁止。ファイルは毎月更新されるため取得日時を `data/raw/SOURCES.md` に記録すること |
+| 取得方法 | Excel 直接ダウンロード |
+| 認証・登録 | 不要 |
 | 対象指標 | Brent（原油）・US HRW（小麦）・Europe（天然ガス TTF）の月次価格列 |
 | 粒度 | 月次（1960年〜） |
-| 利用注意点 | 商用利用可。引用時は World Bank を出典として明記。ファイルは毎月更新されるため取得日時を `data/raw/` の README に記録すること |
 
 ### 6.2 FAO Food Price Index（食料価格指数）
 
@@ -136,13 +138,15 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 | ランディングページ | https://www.fao.org/worldfoodsituation/foodpricesindex/en/ |
 | CSV 直接 DL | https://www.fao.org/media/docs/worldfoodsituationlibraries/default-document-library/food_price_indices_data_csv_mar.csv |
 | ライセンス | CC BY 4.0 |
-| 取得方法 | CSV 手動ダウンロード。FAOSTAT API v1 は JWT 認証が必要なため、CSV 直接取得を使用する |
-| 認証方式 | 不要（CSV 直接 DL） |
-| 登録の要否 | 不要 |
-| レート制限 | なし |
-| 対象指標 | FFPI 総合・穀物（Cereals）・油脂（Oils）・乳製品（Dairy）・肉（Meat）・砂糖（Sugar） |
+| ライセンス確認 URL | https://www.fao.org/contact-us/terms/db-terms-of-use/en/ |
+| 分析結果の公開 | **可**（非商用目的・帰属表示必須） |
+| 判断根拠（原文引用） | "All datasets disseminated through FAO corporate statistical databases...are licensed under the Creative Commons Attribution-4.0 International licence (CC BY 4.0)." |
+| 帰属表示フォーマット | `FAO. [YYYY]. FAO Food Price Index. [Accessed on DD Month YYYY]. https://www.fao.org/worldfoodsituation/foodpricesindex/en/ Licence: CC-BY-4.0.` |
+| 注意点 | **企業製品の販促目的での利用は不可**（"shall not be used for or in conjunction with the promotion of a commercial enterprise and/or its product(s)"）。ブログ・YouTube・GitHub での分析公開は問題なし |
+| 取得方法 | CSV 直接ダウンロード（FAOSTAT API v1 は JWT 認証が必要なため不使用） |
+| 認証・登録 | 不要 |
+| 対象指標 | FFPI 総合・穀物・油脂・乳製品・肉・砂糖（月次） |
 | 粒度 | 月次（1990年〜） |
-| 利用注意点 | 商用利用可。引用時は FAO を出典として明記。CSV のファイル名に月名が含まれるため取得日時を記録すること |
 
 ### 6.3 OECD Stats CPI（OECD加盟国消費者物価）
 
@@ -150,38 +154,35 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 |------|------|
 | データ名 | Consumer Prices — OECD.SDD.TPS |
 | 提供機関 | OECD |
-| API ドキュメント | https://data.oecd.org/api/sdmx-json-documentation/ |
-| SDMX v2 エンドポイント | `https://sdmx.oecd.org/public/rest/v2` |
+| ライセンス | CC BY 4.0（2024年7月1日以降公開データ） |
+| ライセンス確認 URL | https://www.oecd.org/en/about/terms-conditions.html |
+| 分析結果の公開 | **可**（帰属表示必須） |
+| 判断根拠（原文引用） | "Content from 1 July 2024 is generally available under CC licences. The default licence applied by the OECD is Creative Commons Attribution 4.0 (CC BY 4.0)... CC BY 4.0 permits users to copy, redistribute and transform (including translate) content for any purpose, including commercial purposes." 2024年7月以前のデータも: "You may use, copy and distribute written content for commercial and non-commercial purposes without seeking authorisation from the OECD, provided you cite the original work." |
+| 帰属表示フォーマット | `Source: OECD, Consumer Prices (MEI), https://stats.oecd.org/` |
+| 取得方法 | SDMX-JSON API v2 |
+| API エンドポイント | `https://sdmx.oecd.org/public/rest/v2` |
 | データフロー | `OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL` |
-| クエリ例（DEU 月次 2020-2023） | `https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL/DEU.M.GY.CPI.IX._T.N.?startPeriod=2020-01&endPeriod=2023-12&format=jsondata` |
-| ライセンス | CC BY 4.0 |
-| 取得方法 | SDMX-JSON API（`requests` + `pandas` で取得可能） |
-| 認証方式 | APIキー不要 |
-| 登録の要否 | 不要 |
-| レート制限 | 記載なし（過度なリクエストは避ける） |
-| 対象指標 | CPI 前年同月比（`GY` = growth rate year-on-year） |
+| クエリ例（DEU 月次） | `https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL/DEU.M.GY.CPI.IX._T.N.?startPeriod=2020-01&endPeriod=2023-12&format=jsondata` |
+| 認証・登録 | 不要 |
 | 対象国 | DEU・FRA・ITA・POL・TUR・USA・GBR・CAN・AUS・JPN・KOR |
 | 粒度 | 月次 |
-| 利用注意点 | 商用利用可。引用時は OECD を出典として明記。OECD Data Explorer でデータを選択後「Developer API」アイコンから正確なクエリを確認できる |
 
 ### 6.4 IMF CPI（OECD非加盟国補完）
 
 | 項目 | 内容 |
 |------|------|
-| データ名 | International Financial Statistics (IFS) — Consumer Price Index |
+| データ名 | IMF DataMapper — PCPIPCH（Consumer Price Index） |
 | 提供機関 | International Monetary Fund (IMF) |
-| URL | https://www.imf.org/en/Data |
-| SDMX API ドキュメント | https://datahelp.imf.org/knowledgebase/articles/667681-using-json-restful-web-service |
-| SDMX エンドポイント例 | `https://www.imf.org/external/datamapper/api/v1/PCPIPCH/EGY/NGA/IND/CHN/SAU` |
-| ライセンス | IMF 著作権（研究・教育目的の非商用利用可、再配布には許可要） |
-| 取得方法 | IMF DataMapper JSON API |
-| 認証方式 | APIキー不要 |
-| 登録の要否 | 不要 |
-| レート制限 | 記載なし |
-| 対象指標 | PCPIPCH（Inflation, end of period consumer prices, % change） |
-| 対象国 | EGY（エジプト）・NGA（ナイジェリア）・IND（インド）・CHN（中国）・SAU（サウジアラビア） |
-| 粒度 | 年次（月次データが入手困難な国の補完として使用） |
-| 利用注意点 | **再配布は要許可**。本分析の成果物に IMF データの加工結果を公開する場合は IMF の利用規約を再確認すること。研究・学習目的の内部利用は可とみなされる。取得データは `data/raw/` に保管し、加工データのみ `data/processed/` に置く |
+| ライセンス | IMF 独自著作権（CC BY ではない） |
+| ライセンス確認 URL | https://www.imf.org/en/about/copyright-and-terms |
+| 分析結果の公開 | **条件付き可**（非商用・研究・教育目的は許可。帰属表示必須） |
+| 判断根拠（原文引用） | "Users may download, extract, copy, create derivative works, publish, distribute and sell Data obtained from IMF Sites, subject to the following conditions: When Data is distributed or reproduced, it must appear accurately and attributed to the IMF as the source." および "Fair use is defined by the IMF as the excerption or quoting of IMF content by individuals (e.g., academics, journalists, students...) for noncommercial purposes such as criticism, comment, news reporting, teaching, scholarship, or research." |
+| 帰属表示フォーマット | `Source: International Monetary Fund, DataMapper.` |
+| 注意点 | **商用利用は要問い合わせ**（copyright@imf.org）。本分析はブログ・YouTube・GitHub での学習・研究目的の公開であり、"fair use" に該当すると判断する。IMF データの**生データそのものの再配布**は避け、加工済みグラフ・集計値のみ公開する |
+| API エンドポイント | `https://www.imf.org/external/datamapper/api/v1/PCPIPCH/EGY/NGA/IND/CHN/SAU` |
+| 認証・登録 | 不要 |
+| 対象国 | EGY・NGA・IND・CHN・SAU |
+| 粒度 | 年次 |
 
 ### 6.5 UN Comtrade（輸出品目・輸出先 — 補助情報）
 
@@ -191,15 +192,17 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 | 提供機関 | United Nations Statistics Division |
 | URL | https://comtradeplus.un.org/ |
 | 開発者ポータル | https://comtradedeveloper.un.org/ |
-| ライセンス | UN 著作権（研究内部利用可、**再配布には許可要**） |
-| 取得方法 | Python ライブラリ `comtradeapicall` を使用 |
-| インストール | `pip install comtradeapicall` |
-| 認証方式 | **無料 API キー登録必須**（`comtradeplus.un.org` でアカウント作成 → 開発者ポータルで `comtrade - v1` プロダクトを選択） |
-| 登録先 | https://comtradeplus.un.org/ |
-| レート制限 | **1日500リクエスト上限**（無料プラン）。`previewFinalData`（500件・キー不要）と `getFinalData`（フル取得・キー必要）の2種類あり |
+| ライセンス | UN 著作権（CC BY ではない） |
+| ライセンス確認 URL | https://comtrade.un.org/licenseagreement.html |
+| 分析結果の公開 | **要確認**（データそのものの再配布は明示禁止。加工済み分析結果の公開は規約上グレーゾーン） |
+| 判断根拠（原文引用） | "copying, automated browsing or downloading, redistribution, publication, or commercial exploitation of any material...is strictly prohibited." および "Re-dissemination means re-using UN Comtrade data as is (without any transformation) in other data platforms (printed or online), not for internal use." |
+| 注意点 | 「データ as-is の再配布」は禁止されている。加工・集計した分析結果（グラフ等）の公開については明示的な許可規定がなく**グレーゾーン**。公開前に comtrade@un.org へ問い合わせることを推奨。本分析では補助情報（背景地図の輸出依存度）として使用し、生データは公開しない |
+| 取得方法 | `comtradeapicall` ライブラリ（`uv add comtradeapicall`） |
+| 認証 | **無料 API キー必須**（comtradeplus.un.org でアカウント作成 → 開発者ポータルで `comtrade - v1` を Subscribe） |
+| レート制限 | 1日500リクエスト上限（無料プラン） |
+| APIキー管理 | `.env` ファイルで管理。`.gitignore` 済み |
 | 対象データ | ロシア・ウクライナの原油・小麦・天然ガス輸出先構成（HS コード別・年次） |
 | 粒度 | 年次 |
-| 利用注意点 | **再配布要許可**。APIキーは `.env` ファイルで管理し `.gitignore` に追加すること。1日500リクエスト上限のため取得結果を `data/raw/` にキャッシュして再利用する。本分析では補助情報（背景地図の輸出依存度表示）として使用し、主要時系列分析には含めない |
 
 ---
 
@@ -222,3 +225,10 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 ### 1.4 スコープ
 - [x] 分析対象の期間・地域・集団などを明示している
 - [x] 答えない問い・対象外事項も書いている（因果推論・回帰分析・2024年以降など）
+
+### 2.1 ライセンス確認
+- [x] 各データソースのライセンス種別を記載している（Sec 6）
+- [x] ライセンス原文を引用し、判断根拠 URL を記載している（Sec 6 各項）
+- [x] 分析結果（グラフ・レポート・動画）の公開可否を判断している（Sec 6 各項）
+- [x] 「データそのものの再配布」と「加工済み分析結果の公開」を区別して判断している
+- [ ] UN Comtrade の加工済みグラフ公開について comtrade@un.org に問い合わせる（公開前に実施）
