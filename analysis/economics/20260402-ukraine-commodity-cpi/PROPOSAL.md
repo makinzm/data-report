@@ -184,7 +184,7 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 | 対象国 | EGY・NGA・IND・CHN・SAU |
 | 粒度 | 年次 |
 
-### 6.5 UN Comtrade（輸出品目・輸出先 — 補助情報）
+### 6.5 UN Comtrade（輸出品目・輸出先）— **本分析では不使用**
 
 | 項目 | 内容 |
 |------|------|
@@ -196,7 +196,7 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 | ライセンス確認 URL | https://comtrade.un.org/licenseagreement.html |
 | 分析結果の公開 | **要確認**（データそのものの再配布は明示禁止。加工済み分析結果の公開は規約上グレーゾーン） |
 | 判断根拠（原文引用） | "copying, automated browsing or downloading, redistribution, publication, or commercial exploitation of any material...is strictly prohibited." および "Re-dissemination means re-using UN Comtrade data as is (without any transformation) in other data platforms (printed or online), not for internal use." |
-| 注意点 | 「データ as-is の再配布」は禁止されている。加工・集計した分析結果（グラフ等）の公開については明示的な許可規定がなく**グレーゾーン**。公開前に comtrade@un.org へ問い合わせることを推奨。本分析では補助情報（背景地図の輸出依存度）として使用し、生データは公開しない |
+| 使用状況 | **本分析では使用しない。** 加工済みグラフの公開可否が規約上グレーゾーンのため除外。初版完成後に comtrade@un.org へ許可を問い合わせ、承認が得られた場合に補足として追加する（makinzm/data-report#3） |
 | 取得方法 | `comtradeapicall` ライブラリ（`uv add comtradeapicall`） |
 | 認証 | **無料 API キー必須**（comtradeplus.un.org でアカウント作成 → 開発者ポータルで `comtrade - v1` を Subscribe） |
 | レート制限 | 1日500リクエスト上限（無料プラン） |
@@ -231,4 +231,4 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 - [x] ライセンス原文を引用し、判断根拠 URL を記載している（Sec 6 各項）
 - [x] 分析結果（グラフ・レポート・動画）の公開可否を判断している（Sec 6 各項）
 - [x] 「データそのものの再配布」と「加工済み分析結果の公開」を区別して判断している
-- [ ] UN Comtrade の加工済みグラフ公開について comtrade@un.org に問い合わせる（公開前に実施）
+- [x] UN Comtrade はライセンスがグレーゾーンのため本分析から除外。初版完成後に問い合わせ予定（makinzm/data-report#3）
