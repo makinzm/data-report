@@ -154,11 +154,12 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 |------|------|
 | データ名 | Consumer Prices — OECD.SDD.TPS |
 | 提供機関 | OECD |
-| ライセンス | CC BY 4.0（2024年7月1日以降公開データ） |
-| ライセンス確認 URL | https://www.oecd.org/en/about/terms-conditions.html |
-| 分析結果の公開 | **可**（帰属表示必須） |
-| 判断根拠（原文引用） | "Content from 1 July 2024 is generally available under CC licences. The default licence applied by the OECD is Creative Commons Attribution 4.0 (CC BY 4.0)... CC BY 4.0 permits users to copy, redistribute and transform (including translate) content for any purpose, including commercial purposes." 2024年7月以前のデータも: "You may use, copy and distribute written content for commercial and non-commercial purposes without seeking authorisation from the OECD, provided you cite the original work." |
-| 帰属表示フォーマット | `Source: OECD, Consumer Prices (MEI), https://stats.oecd.org/` |
+| ライセンス | OECD 独自規約（CC BY ではない。Data セクション適用） |
+| ライセンス確認 URL | https://www.oecd.org/en/about/terms-conditions.html（Sec 3. Data） |
+| 分析結果の公開 | **可**（商用含む。ただしサードパーティ制限の確認が必要） |
+| 判断根拠（原文引用） | "Except where additional restrictions apply, you can extract from, download, copy, adapt, print, distribute, share and embed Data for any purpose, even for commercial use." ただし同条件に: "Data may be subject to restrictions beyond the scope of these Terms and Conditions, either because specific terms apply to those Data or because third parties may have ownership interests. It is the user's responsibility to verify...whether the Data is fully or partially owned by third parties." |
+| 帰属表示フォーマット | 規約上の明示義務はないが慣行として記載: `Source: OECD, Consumer Prices (MEI), https://stats.oecd.org/` |
+| **要確認事項** | OECD Stats の CPI データが第三者所有データを含まないか、データのメタデータまたは「source」タブで確認すること（取得時に記録） |
 | 取得方法 | SDMX-JSON API v2 |
 | API エンドポイント | `https://sdmx.oecd.org/public/rest/v2` |
 | データフロー | `OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL` |
