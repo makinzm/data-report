@@ -35,6 +35,16 @@ Brent 原油・US HRW 小麦・欧州 TTF ガスの3つを同一ファイルで�
 2. "Historical Data" セクションの "Monthly Prices" Excel リンクをクリック
 3. 直接 URL: `https://thedocs.worldbank.org/en/doc/18675f1d1639c7a34d463f59263ba0a2-0050012025/related/CMO-Historical-Data-Monthly.xlsx`
 
+### ダウンロードコマンドと保存先
+
+```bash
+# 保存先: data/raw/pinksheet_monthly.xlsx
+curl -L -o data/raw/pinksheet_monthly.xlsx \
+  "https://thedocs.worldbank.org/en/doc/18675f1d1639c7a34d463f59263ba0a2-0050012025/related/CMO-Historical-Data-Monthly.xlsx"
+```
+
+取得後、`data/raw/SOURCES.md` に取得日時を記録する。
+
 ### メタデータの確認先
 
 - Excel ファイル内の "Notes" シートに指標の定義・出典が記載されている
@@ -65,6 +75,16 @@ FAO 指数はこれらを含む食料価格全体の動向を把握するのに�
 1. 上記ランディングページを開く
 2. "Download data" リンクから CSV を取得
 3. 安定 URL（月名なし）: `https://www.fao.org/media/docs/worldfoodsituationlibraries/default-document-library/food_price_indices_data.csv`
+
+### ダウンロードコマンドと保存先
+
+```bash
+# 保存先: data/raw/fao_food_price_index.csv
+curl -L -o data/raw/fao_food_price_index.csv \
+  "https://www.fao.org/media/docs/worldfoodsituationlibraries/default-document-library/food_price_indices_data.csv"
+```
+
+取得後、`data/raw/SOURCES.md` に取得日時を記録する。
 
 ### メタデータの確認先
 
@@ -107,6 +127,19 @@ OECD 加盟国（G7・欧州主要国・日韓）の月次 CPI を一つの API 
 - **現状** — DSD は調査済みで次元構造は把握した（REF_AREA.FREQ.METHODOLOGY.MEASURE.UNIT_MEASURE.EXPENDITURE.ADJUSTMENT.TRANSFORMATION）
   ただし OECD Data Explorer でクエリを生成して正とする
 
+### ダウンロードコマンドと保存先
+
+**クエリ URL は OECD Data Explorer で生成してから記入すること（以下は未確定）:**
+
+```bash
+# 保存先: data/raw/oecd_cpi_monthly.json
+# ※ URL は Data Explorer で生成した正式なものに差し替える
+curl -L -o data/raw/oecd_cpi_monthly.json \
+  "<OECD Data Explorer で生成した URL>"
+```
+
+取得後、`data/raw/SOURCES.md` に取得日時と使用した URL を記録する。
+
 ### クエリの現状と問題
 
 以下のクエリは**まだ動作未確認**（ユーザーに確認をお願いしている）:
@@ -120,7 +153,7 @@ https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL/DEU
 
 ### 未解決事項
 
-- [ ] OECD Data Explorer で国・指標・期間を選択し、正式なクエリ URL を生成して記録する
+- [ ] OECD Data Explorer で国・指標・期間を選択し、正式なクエリ URL を生成して記録する（上記コマンドの URL を差し替える）
 - [ ] 上記クエリの動作を確認する（ユーザー確認待ち）
 - [ ] TUR（トルコ）が CL_AREA に存在するか確認する
 
@@ -146,6 +179,16 @@ OECD Stats から取得できない。IMF は世界 190 カ国以上の CPI デ�
 2. "Inflation rate, average consumer prices" (PCPIPCH) を選択
 3. 対象国を選択して API URL を確認する
 4. または直接: `https://www.imf.org/external/datamapper/api/v1/PCPIPCH/EGY/NGA/IND/CHN/SAU`
+
+### ダウンロードコマンドと保存先
+
+```bash
+# 保存先: data/raw/imf_cpi_annual.json
+curl -L -o data/raw/imf_cpi_annual.json \
+  "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/EGY/NGA/IND/CHN/SAU"
+```
+
+取得後、`data/raw/SOURCES.md` に取得日時を記録する。
 
 ### メタデータの確認先
 
