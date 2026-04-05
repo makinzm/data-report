@@ -117,7 +117,8 @@ CPI 比較の対象国を以下に事前固定する（データ取得後に国�
 | データ名 | Commodity Price Data (The Pink Sheet) |
 | 提供機関 | World Bank |
 | ランディングページ | https://thedocs.worldbank.org/en/doc/18675f1d1639c7a34d463f59263ba0a2-0050012025/world-bank-commodities-price-data-the-pink-sheet |
-| 月次 Excel 直接 DL | https://thedocs.worldbank.org/en/doc/18675f1d1639c7a34d463f59263ba0a2-0050012025/related/CMO-Historical-Data-Monthly.xlsx |
+| 月次 Excel 直接 DL | https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx |
+| URL の注意 | URL はファイル更新のたびに変わる。取得時点のリンクをランディングページの "Monthly prices (XLS)" から取得して `SOURCES.md` に記録すること |
 | ライセンス | CC BY 4.0 |
 | ライセンス確認 URL | https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets |
 | 分析結果の公開 | **可**（帰属表示必須） |

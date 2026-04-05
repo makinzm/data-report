@@ -31,16 +31,20 @@ Brent 原油・US HRW 小麦・欧州 TTF ガスの3つを同一ファイルで�
 
 ### データへのたどり着き方
 
-1. 上記ランディングページを開く
-2. "Historical Data" セクションの "Monthly Prices" Excel リンクをクリック
-3. 直接 URL: `https://thedocs.worldbank.org/en/doc/18675f1d1639c7a34d463f59263ba0a2-0050012025/related/CMO-Historical-Data-Monthly.xlsx`
+1. ランディングページを開く: https://www.worldbank.org/en/research/commodity-markets
+2. "Recent Reports and Data" セクションの **"Monthly prices [月] [年] (XLS)"** リンクを右クリック → リンクのアドレスをコピー
+3. **注意: URL はファイル更新のたびに変わる**（ドキュメント ID が年次で変わることを確認済み）
+   - 2025年版: `...18675f1d1639c7a34d463f59263ba0a2-0050012025/...`
+   - 2026年版: `...74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/...`
+   - → 取得時点の最新リンクをページから直接コピーすること
 
 ### ダウンロードコマンドと保存先
 
 ```bash
 # 保存先: data/raw/pinksheet_monthly.xlsx
+# ※ URL はランディングページの "Monthly prices (XLS)" リンクから取得すること
 curl -L -o data/raw/pinksheet_monthly.xlsx \
-  "https://thedocs.worldbank.org/en/doc/18675f1d1639c7a34d463f59263ba0a2-0050012025/related/CMO-Historical-Data-Monthly.xlsx"
+  "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx"
 ```
 
 取得後、`data/raw/SOURCES.md` に取得日時を記録する。
