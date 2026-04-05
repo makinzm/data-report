@@ -116,55 +116,71 @@ OECD 加盟国（G7・欧州主要国・日韓）の月次 CPI を一つの API 
 
 ### 公式ドキュメントの場所
 
-- SDMX REST v2 仕様（OECD 固有）: **要確認** — 以下を読む必要がある
-  - https://data.oecd.org/api/sdmx-json-documentation/
-  - https://www.oecd.org/en/data/insights/data-explainers/2024/09/api.html
+- OECD Data API 仕様書（PDF、2024-07-22版）:
+  https://gitlab.algobank.oecd.org/public-documentation/dotstat-migration/-/raw/main/OECD_Data_API_documentation.pdf
 - SDMX 標準仕様（一般）: https://github.com/sdmx-twg/sdmx-rest/blob/master/doc/data.md
+
+### API バージョンの選択根拠
+
+仕様書（p.4）より:
+- `startPeriod`/`endPeriod` は **SDMX API v1 専用**
+- `c[TIME_PERIOD]=ge:..+le:..` は **SDMX API v2 専用**（`+` がシェルで空白に化ける問題あり）
+- 複数値の `+` 区切り（`DEU+FRA+...`）は **v1 でのみ有効**（v2 は次元ごと1値のみ）
+
+→ 複数国 + 期間絞り込みには **v1 API + `startPeriod`/`endPeriod`** を使う。
 
 ### データへのたどり着き方
 
 1. OECD Data Explorer ( https://data-explorer.oecd.org/ ) を開く
-2. "Prices" → "Consumer Prices" を選択
-3. 国・指標・期間を選択後、「Developer API」アイコンからクエリ URL を取得する
-   （**これが本来の正しいたどり着き方。仕様書から推測ではなく UI からクエリを生成すべきだった**）
+2. "Prices" → "Consumer Prices (MEI)" または "Consumer price indices (CPIs, HICPs), COICOP 1999" を選択
+3. 国・指標・期間を選択後、「Developer API」アイコンから URL を取得して次元コードを確認する
 
 ### メタデータの確認先
 
 - データ構造定義 (DSD):
   `https://sdmx.oecd.org/public/rest/v2/structure/datastructure/OECD.SDD.TPS/DSD_PRICES?references=all`
-- 次元・コードリストはこの DSD を読めば確認できる
-- **現状** — DSD は調査済みで次元構造は把握した（REF_AREA.FREQ.METHODOLOGY.MEASURE.UNIT_MEASURE.EXPENDITURE.ADJUSTMENT.TRANSFORMATION）
-  ただし OECD Data Explorer でクエリを生成して正とする
+- 次元構造: `REF_AREA.FREQ.METHODOLOGY.MEASURE.UNIT_MEASURE.EXPENDITURE.ADJUSTMENT.TRANSFORMATION`
+- 認証方式: APIキー不要、レート制限: 公式未明示
 
 ### ダウンロードコマンドと保存先
 
-**クエリ URL は OECD Data Explorer で生成してから記入すること（以下は未確定）:**
+仕様書の v1 構文: `https://sdmx.oecd.org/public/rest/data/<agency>,<dataflow>,<version>/<filter>?<params>`
 
 ```bash
-# 保存先: data/raw/oecd_cpi_monthly.json
-# ※ URL は Data Explorer で生成した正式なものに差し替える
-curl -L -o data/raw/oecd_cpi_monthly.json \
-  "<OECD Data Explorer で生成した URL>"
+# 保存先: data/raw/oecd_cpi_monthly.csv
+# SDMX API v1 を使用（複数国指定 + startPeriod/endPeriod が使えるため）
+# ※ 次元値（特に TUR の国コード）は OECD Data Explorer で確認してから実行すること
+curl -L \
+  -H "Accept: application/vnd.sdmx.data+csv; charset=utf-8" \
+  -o data/raw/oecd_cpi_monthly.csv \
+  "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,/DEU+FRA+ITA+POL+TUR+USA+GBR+CAN+AUS+JPN+KOR.M.N.CPI.PA._T.N.GY?startPeriod=2020-01&endPeriod=2023-12"
 ```
 
 取得後、`data/raw/SOURCES.md` に取得日時と使用した URL を記録する。
 
-### クエリの現状と問題
+### 取得結果
 
-以下のクエリは**まだ動作未確認**（ユーザーに確認をお願いしている）:
+- TUR・KOR ともに `CL_AREA` に存在し、月次データ取得済みを確認（2026-04-05）
+- AUS は月次データなし（四半期 CPI のみ）→ 別途 `oecd_cpi_aus_quarterly.csv` で四半期取得済み
+- 10カ国月次 + AUS四半期の2ファイル構成で分析する
 
+```bash
+# 月次（AUS 除く 10カ国）— 取得済み
+curl -s \
+  -H "Accept: application/vnd.sdmx.data+csv; charset=utf-8" \
+  -o data/raw/oecd_cpi_monthly.csv \
+  "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,/DEU+FRA+ITA+POL+TUR+USA+GBR+CAN+AUS+JPN+KOR.M.N.CPI.PA._T.N.GY?startPeriod=2020-01&endPeriod=2023-12"
+
+# 四半期（AUS のみ）— 取得済み
+curl -s \
+  -H "Accept: application/vnd.sdmx.data+csv; charset=utf-8" \
+  -o data/raw/oecd_cpi_aus_quarterly.csv \
+  "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,/AUS.Q.N.CPI.PA._T.N.GY?startPeriod=2020-Q1&endPeriod=2023-Q4"
 ```
-https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL/DEU+FRA+ITA+POL+TUR+USA+GBR+CAN+AUS+JPN+KOR.M.N.CPI.PA._T.N.GY/?startPeriod=2020-01&endPeriod=2023-12&format=jsondata
-```
-
-- `startPeriod`/`endPeriod` の使用可否が OECD 実装で未確定
-- TUR のコードが `TUR` で正しいか未確認
 
 ### 未解決事項
 
-- [ ] OECD Data Explorer で国・指標・期間を選択し、正式なクエリ URL を生成して記録する（上記コマンドの URL を差し替える）
-- [ ] 上記クエリの動作を確認する（ユーザー確認待ち）
-- [ ] TUR（トルコ）が CL_AREA に存在するか確認する
+なし（CAN は OECD 加盟国なので月次で含まれる）
 
 ---
 
