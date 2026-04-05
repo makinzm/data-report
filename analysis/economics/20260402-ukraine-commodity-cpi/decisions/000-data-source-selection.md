@@ -76,19 +76,24 @@ FAO 指数はこれらを含む食料価格全体の動向を把握するのに�
 
 ### データへのたどり着き方
 
-1. 上記ランディングページを開く
-2. "Download data" リンクから CSV を取得
-3. 安定 URL（月名なし）: `https://www.fao.org/media/docs/worldfoodsituationlibraries/default-document-library/food_price_indices_data.csv`
+1. ランディングページを開く: https://www.fao.org/worldfoodsituation/foodpricesindex/en/
+2. "Download datasets" の **"CSV: Nominal indices from 1990 onwards (monthly)"** を選ぶ
+   - Excel 版には実質価格（インフレ調整済み）も含まれるが、今回の分析（2022年前後の急騰確認）は名目価格で十分
+3. ページ上のリンク URL（右クリックでコピー）:
+   `https://www.fao.org/media/docs/worldfoodsituationlibraries/default-document-library/food_price_indices_data.csv?sfvrsn=523ebd2a_78&download=true`
+   - `sfvrsn` は SharePoint のバージョン番号で月次更新のたびに変わる
+   - クエリパラメータなしのベース URL でも取得可能なことを確認済み
 
 ### ダウンロードコマンドと保存先
 
 ```bash
 # 保存先: data/raw/fao_food_price_index.csv
+# ベース URL はパラメータなしでも動作する（より安定）
 curl -L -o data/raw/fao_food_price_index.csv \
   "https://www.fao.org/media/docs/worldfoodsituationlibraries/default-document-library/food_price_indices_data.csv"
 ```
 
-取得後、`data/raw/SOURCES.md` に取得日時を記録する。
+取得後、`data/raw/SOURCES.md` に取得日時と `sfvrsn` バージョン番号を記録する。
 
 ### メタデータの確認先
 
