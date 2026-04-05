@@ -1,0 +1,6 @@
+pre-commit:
+  commands:
+    check-fullwidth-brackets:
+      glob: "**/*.md"
+      run: scripts/check_fullwidth_brackets.sh {staged_files}
+      fail_text: "URL/メールを囲む全角括弧（）を半角 () に変えてください"
